@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""Square module.
-This module contains a class that defines a square with its size.
-"""
+Square = __import__('1-square').Square
 
+my_square = Square(3)
+print(type(my_square))
+print(my_square.__dict__)
 
-class Square:
-    """represents a square"""
-    def __init__(self, size):
-        """Initializes a new Square.
+try:
+    print(my_square.size)
+except Exception as e:
+    print(e)
 
-        Args:
-            size (int): The size of the new square.
-        """
-        self.size = size
+try:
+    print(my_square.__size)
+except Exception as e:
+    print(e)
