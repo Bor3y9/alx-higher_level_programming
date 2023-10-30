@@ -3,4 +3,5 @@
 
 
 class Rectangle:
+    """ Just Passing Only , and not doing anything"""
     pass
