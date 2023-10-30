@@ -89,4 +89,3 @@ class Rectangle():
         """Sets the del behavior of the Rectangle object."""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-
