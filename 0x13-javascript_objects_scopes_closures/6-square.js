@@ -1,51 +1,49 @@
 #!/usr/bin/node
 class Rectangle {
-    constructor (w, h) {
-      if (w <= 0 || h <= 0 || w === undefined || h === undefined) {
-        return this;
-      } else {
-        this.width = w;
-        this.height = h;
-      }
+  constructor (w, h) {
+    if (w <= 0 || h <= 0 || w === undefined || h === undefined) {
+      return this;
+    } else {
+      this.width = w;
+      this.height = h;
     }
-  
-    print () {
+  }
+
+  print () {
+    for (let r = 0; r < this.height; r++) {
+      let row = '';
+      for (let c = 0; c < this.width; c++) row += 'X';
+      console.log(row);
+    }
+  }
+
+  rotate () {
+    const tmp = this.width;
+    this.width = this.height;
+    this.height = tmp;
+  }
+
+  double () {
+    this.width = this.width * 2;
+    this.height = this.height * 2;
+  }
+
+  charPrint (c) {
+    if (c === undefined) {
+      this.print();
+    } else {
       for (let r = 0; r < this.height; r++) {
         let row = '';
-        for (let c = 0; c < this.width; c++) row += 'X';
+        for (let c = 0; c < this.width; c++) row += 'C';
         console.log(row);
       }
     }
-  
-    rotate () {
-      const tmp = this.width;
-      this.width = this.height;
-      this.height = tmp;
-    }
-  
-    double () {
-      this.width = this.width * 2;
-      this.height = this.height * 2;
-    }
-    charPrint(c) {
-        if ( c === undefined )
-        {
-          this.print();
-        }
-        else {
-          for (let r = 0; r < this.height; r++) {
-            let row = '';
-            for (let c = 0; c < this.width; c++) row += 'C';
-            console.log(row);
-          }
-        }
-      }
   }
-  
-  class Square extends Rectangle {
-    constructor (size) {
-      super(size, size);
-    }
+}
+
+class Square extends Rectangle {
+  constructor (size) {
+    super(size, size);
   }
-  module.exports = Square;
-  
+}
+module.exports = Square;
