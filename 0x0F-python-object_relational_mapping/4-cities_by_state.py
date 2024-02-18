@@ -1,23 +1,23 @@
 #!/usr/bin/python3
-'''
-4-cities_by_state.py:
-script that lists all cities from the database hbtn_0e_4_usa
-Usage: ./4-cities_by_state.py <mysql username> <mysql password> <database name>
-'''
+"""lists all states from the database with IDs in ascending order"""
 
 import MySQLdb
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3],
-                         host='localhost', port=3306, charset="utf8")
-    cur = db.cursor()
-    cur.execute("SELECT `cities`.`id`, `cities`.`name`, `states`.`name`\
-                FROM `cities`\
-                JOIN `states` ON `cities`.`state_id` = `states`.`id`\
-                ORDER BY `cities`.`id` ASC")
-    rows = cur.fetchall()
-    for row in rows:
+    userName = sys.argv[1]
+    passwd = sys.argv[2]
+    table = sys.argv[3]
+
+    conn = MySQLdb.connect(host="localhost", port=3306, user=userName,
+                           passwd=passwd, db=table, charset="utf8")
+    cur = conn.cursor()
+    cur.execute("SELECT cities.id, cities.name, states.name\
+                 FROM cities JOIN states\
+                 ON cities.state_id = states.id\
+                 ORDER BY cities.id ASC")
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
     cur.close()
-    db.close()
+    conn.close()
