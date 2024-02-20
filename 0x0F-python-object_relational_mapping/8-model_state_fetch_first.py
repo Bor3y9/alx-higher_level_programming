@@ -18,8 +18,8 @@ if __name__ == '__main__':
     session = Session()
 
     result = session.query(State).filter(State.id == 1)
-    if (result is not None):
-        for row in result:
-            print("{}: {}".format(row.id, row.name))
+
+    if (result is None):
+        print('Nothing')
     else:
-        print("Nothing")
+        print("{}: {}".format(result.id, result.name))
