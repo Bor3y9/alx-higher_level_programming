@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+list The First state from the database hbtn_0e_6_usa
 """
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -16,6 +16,7 @@ if __name__ == '__main__':
                            (username, password, database), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
+
     result = session.query(State).filter(State.id == 1)
     if (result is not None):
         for row in result:
