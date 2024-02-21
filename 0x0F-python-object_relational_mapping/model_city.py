@@ -11,4 +11,4 @@ class City(Base):
     __tablename__ = 'cities'
     id = Column('id', Integer, primary_key=True, nullable=False)
     name = Column('name', VARCHAR(128), nullable=False)
-    state_id = Column("state_id",Integer, ForeignKey=True, nullable=False)
+    state_id = Column("state_id",Integer, ForeignKey=('state_id'), nullable=False)
