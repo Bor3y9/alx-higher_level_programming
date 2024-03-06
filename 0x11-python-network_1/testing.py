@@ -1,5 +1,5 @@
 import requests
 
-# data1 = {'page':25,'count':3}
-r = requests.get('https://alx-intranet.hbtn.io')
-print(r.headers['X-Request-Id'])
+payload = {'username': 'bor3y1', 'password': '12345' }
+r = requests.post("https://httpbin.org/post",data=payload)
+print(r.headers)
