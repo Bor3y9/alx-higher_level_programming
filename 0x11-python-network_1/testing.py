@@ -1,4 +1,5 @@
 import urllib.request
-with urllib.request.urlopen("https://alx-intranet.hbtn.io") as response:
-    html = response.headers
-print(html['X-request-Id'])
+req = urllib.request.Request('http://bor3y.tech')
+with urllib.request.urlopen(req) as response:
+    html = response.read()
+print(html)
